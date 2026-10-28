@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gulf Policy Souq - Compare, Choose, Save</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================
+       1. COLORFUL AURORA MESH BACKGROUND & RESET
+       ========================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #0d0914;
+      color: #f8fafc;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Vibrant Dynamic Multi-Color Animated Aurora Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -30%;
+      left: -20%;
+      width: 140%;
+      height: 160%;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 128, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(0, 212, 255, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(120, 0, 255, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 85%, rgba(255, 183, 0, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 20% 80%, rgba(0, 255, 170, 0.2) 0%, transparent 40%);
+      filter: blur(60px);
+      z-index: -2;
+      pointer-events: none;
+      animation: auroraGlow 15s ease-in-out infinite alternate;
+    }
+
+    @keyframes auroraGlow {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(5deg) scale(1.08); }
+      100% { transform: rotate(-5deg) scale(1); }
+    }
+
+    /* Subtle Grid Layer */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    /* ==========================================
+       2. GLASS HEADER & VIBRANT DROPDOWN
+       ========================================== */
+    header {
+      background: rgba(18, 12, 32, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 50px;
+      filter: drop-shadow(0 0 12px rgba(255, 183, 0, 0.6));
+      transition: transform 0.4s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .logo-text h1 {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #ffffff 0%, #ffd700 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: #00d4ff;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-item {
+      position: relative;
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      padding: 12px 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #ff0080, #7928ca, #00dfd8);
+      transition: width 0.3s ease;
+    }
+
+    .nav-item:hover {
+      color: #00dfd8;
+    }
+
+    .nav-item:hover::after {
+      width: 100%;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(15px);
+      background: rgba(22, 14, 40, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(121, 40, 202, 0.3);
+      border-radius: 14px;
+      min-width: 240px;
+      padding: 12px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 11px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      border-left: 3px solid transparent;
+    }
+
+    .dropdown a:hover {
+      background: linear-gradient(90deg, rgba(255, 0, 128, 0.15), transparent);
+      color: #ff0080;
+      border-left-color: #ff0080;
+      padding-left: 26px;
+    }
+
+    .btn-contact {
+      background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255, 0, 128, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .btn-contact:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 30px rgba(255, 0, 128, 0.7);
+      background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
+    }
+
+    /* ==========================================
+       3. HERO SECTION & GLOW PILL
+       ========================================== */
+    .hero-section {
+      padding: 70px 5% 80px 5%;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-pill {
+      display: inline-block;
+      border: 1px solid rgba(0, 223, 216, 0.5);
+      border-radius: 30px;
+      padding: 10px 28px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(0, 223, 216, 0.15), rgba(121, 40, 202, 0.2));
+      backdrop-filter: blur(10px);
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(0, 223, 216, 0.3);
+      animation: pulseGlow 3s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(0, 223, 216, 0.3); }
+      100% { box-shadow: 0 0 35px rgba(255, 0, 128, 0.6); }
+    }
+
+    .hero-subtitle {
+      color: #cbd5e1;
+      font-size: 18px;
+      max-width: 650px;
+      margin: 0 auto 50px auto;
+      font-weight: 500;
+    }
+
+    /* ==========================================
+       4. ADVANCED COLORFUL CARDS GRID
+       ========================================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 22px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: rgba(30, 20, 50, 0.5);
+      backdrop-filter: blur(16px);
+      border-radius: 18px;
+      padding: 32px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hover Multi-Color Border Glow */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      padding: 2px;
+      background: linear-gradient(135deg, #ff0080, #7928ca, #00dfd8, #ffb700);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      background: rgba(40, 25, 65, 0.85);
+      box-shadow: 0 20px 40px rgba(121, 40, 202, 0.4), 0 0 30px rgba(0, 223, 216, 0.3);
+    }
+
+    .card-icon {
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 223, 216, 0.2));
+      border-radius: 14px;
+      padding: 12px;
+      transition: transform 0.4s ease, background 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .service-card:hover .card-icon {
+      transform: scale(1.18) rotate(6deg);
+      background: linear-gradient(135deg, rgba(255, 0, 128, 0.4), rgba(0, 223, 216, 0.4));
+    }
+
+    .card-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: #00dfd8;
+      fill: none;
+      stroke-width: 1.8;
+      filter: drop-shadow(0 0 6px #00dfd8);
+    }
+
+    .service-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    /* ==========================================
+       5. SECTION HEADINGS & COMPREHENSIVE INSURANCE
+       ========================================== */
+    .section-padding {
+      padding: 85px 5%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 0%, #00dfd8 50%, #ff0080 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: #cbd5e1;
+      font-size: 15px;
+      margin-bottom: 55px;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .insurance-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+    }
+
+    /* ==========================================
+       6. TWO COLUMN COLORFUL FEATURES
+       ========================================== */
+    .two-col-section {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 65px 5%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: rgba(35, 20, 55, 0.5);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateX(10px);
+      background: rgba(45, 25, 75, 0.8);
+      border-color: rgba(0, 223, 216, 0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .feature-icon-box {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(255, 0, 128, 0.4);
+    }
+
+    .feature-text h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .feature-text p {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 15px;
+      color: #f1f5f9;
+      background: rgba(35, 20, 55, 0.4);
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .check-item:hover {
+      transform: scale(1.02);
+      border-color: rgba(255, 0, 128, 0.4);
+    }
+
+    .check-item i {
+      color: #00dfd8;
+      background: rgba(0, 223, 216, 0.15);
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    /* ==========================================
+       7. BANK NETWORK SECTION (GLOWING CARDS)
+       ========================================== */
+    .banks-section {
+      background: rgba(18, 10, 32, 0.7);
+      padding: 85px 5%;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .banks-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      max-width: 1240px;
+      margin: 45px auto 0 auto;
+    }
+
+    .bank-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 16px;
+      padding: 20px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 115px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .bank-card:hover {
+      box-shadow: 0 15px 35px rgba(0, 223, 216, 0.4);
+      transform: translateY(-8px) scale(1.05);
+      background: #ffffff;
+    }
+
+    .bank-logo-svg {
+      height: 40px;
+      width: auto;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bank-card span {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+    }
+
+    /* ==========================================
+       8. COLORFUL ARTICLES CAROUSEL/GRID
+       ========================================== */
+    .articles-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1240px;
+      margin: 0 auto 35px auto;
+    }
+
+    .see-all {
+      color: #00dfd8;
+      font-weight: 800;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .see-all:hover {
+      gap: 10px;
+      color: #ff0080;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .article-card {
+      background: rgba(30, 20, 50, 0.5);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .article-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 0, 128, 0.5);
+      box-shadow: 0 20px 45px rgba(121, 40, 202, 0.5);
+    }
+
+    .article-img {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease;
+    }
+
+    .article-card:hover .article-img {
+      transform: scale(1.08);
+    }
+
+    .article-body {
+      padding: 24px;
+    }
+
+    .article-body h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    .article-body p {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      color: #ff0080;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ==========================================
+       9. ADVISORS SECTION & SMOOTH 3D CARD ANIMATIONS
+       ========================================== */
+    .advisors-section {
+      background: rgba(18, 10, 32, 0.85);
+      padding: 95px 5%;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .advisors-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .advisors-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .advisors-desc {
+      color: #cbd5e1;
+      font-size: 16px;
+      margin-bottom: 35px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      background: rgba(35, 20, 55, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 14px 30px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .pill-btn:hover {
+      background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(0, 223, 216, 0.2));
+      border-color: #00dfd8;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 223, 216, 0.3);
+    }
+
+    /* Tilted 3D Stacked Credit Cards Container */
+    .tilted-cards-stack {
+      position: relative;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1000px;
+    }
+
+    .advisors-card {
+      width: 320px;
+      height: 190px;
+      border-radius: 18px;
+      position: absolute;
+      padding: 22px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      /* Smooth 3D Transition for Scroll Down / Up */
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease, box-shadow 0.8s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #ffffff;
+      font-family: 'Courier New', Courier, monospace;
+      will-change: transform, opacity;
+    }
+
+    /* DEFAULT STACKED / HIDDEN POSITION (BEFORE SCROLL IN) */
+    .card-top {
+      background: linear-gradient(135deg, #1f1c2c 0%, #928dab 100%);
+      transform: rotate(22deg) translate(-10px, 90px) scale(0.9);
+      z-index: 3;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      opacity: 0.4;
+    }
+
+    .card-mid {
+      background: linear-gradient(135deg, #ff0080 0%, #ff8c00 100%);
+      transform: rotate(22deg) translate(0px, 120px) scale(0.9);
+      z-index: 2;
+      opacity: 0.4;
+    }
+
+    .card-bot {
+      background: linear-gradient(135deg, #00dfd8 0%, #0072ff 100%);
+      color: #ffffff;
+      transform: rotate(22deg) translate(10px, 150px) scale(0.9);
+      z-index: 1;
+      opacity: 0.4;
+    }
+
+    /* ACTIVE SPREAD POSITION (WHEN SCROLLED INTO VIEW) */
+    .advisors-section.active .card-top {
+      transform: rotate(20deg) translate(-35px, -65px) scale(1);
+      opacity: 1;
+      box-shadow: -15px 25px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .advisors-section.active .card-mid {
+      transform: rotate(20deg) translate(0px, 0px) scale(1);
+      opacity: 1;
+      box-shadow: -10px 20px 35px rgba(255, 0, 128, 0.4);
+    }
+
+    .advisors-section.active .card-bot {
+      transform: rotate(20deg) translate(35px, 65px) scale(1);
+      opacity: 1;
+      box-shadow: -5px 15px 30px rgba(0, 223, 216, 0.4);
+    }
+
+    .card-num {
+      font-size: 16px;
+      letter-spacing: 2.5px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+
+    .card-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      text-transform: uppercase;
+      opacity: 0.9;
+      letter-spacing: 1px;
+    }
+
+    /* ==========================================
+       10. FOOTER
+       ========================================== */
+    footer {
+      background: #06030a;
+      padding: 75px 5% 30px 5%;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+    }
+
+    .footer-grid {
+      max-width: 1240px;
+      margin: 0 auto 50px auto;
+      display: grid;
+      grid-template-columns: 1.5fr repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .footer-col h5 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col ul a {
+      color: #cbd5e1;
+    }
+
+    .footer-col ul a:hover {
+      color: #00dfd8;
+      padding-left: 5px;
+    }
+
+    .disclaimer-text {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: #64748b;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .footer-bottom {
+      max-width: 1240px;
+      margin: 25px auto 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .social-icons a {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: linear-gradient(135deg, #ff0080, #7928ca);
+      color: #ffffff;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: 0 6px 15px rgba(255, 0, 128, 0.5);
+    }
+
+    /* FLOATING COOKIE WIDGET */
+    .cookie-widget {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #ff0080 0%, #7928ca 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 6px 25px rgba(255, 0, 128, 0.5);
+      cursor: pointer;
+      z-index: 999;
+      transition: transform 0.3s ease;
+    }
+
+    .cookie-widget:hover {
+      transform: scale(1.15) rotate(20deg);
+    }
+
+    /* ==========================================
+       11. RESPONSIVE DESIGN (MOBILE & TABLET)
+       ========================================== */
+    @media (max-width: 1024px) {
+      .cards-grid, .banks-grid, .insurance-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .two-col-section, .advisors-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .cards-grid, .banks-grid, .insurance-grid, .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cards-grid, .banks-grid, .insurance-grid, .articles-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <header>
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 100 120" fill="none">
+        <path d="M50 5 L90 25 V60 C90 85 50 110 50 110 C50 110 10 85 10 60 V25 Z" stroke="url(#logoGrad)" stroke-width="8" fill="none"/>
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff0080"/>
+            <stop offset="100%" stop-color="#00dfd8"/>
+          </linearGradient>
+        </defs>
+        <rect x="30" y="55" width="10" height="30" fill="#ffd700"/>
+        <rect x="45" y="40" width="10" height="45" fill="#ffd700"/>
+        <rect x="60" y="30" width="10" height="55" fill="#ffd700"/>
+      </svg>
+      <div class="logo-text">
+        <h1>GULF POLICY<br>SOUQ</h1>
+        <span>Compare. Choose. Save.</span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li class="nav-item">
+        BANK ACCOUNT
+        <div class="dropdown">
+          <a href="#">Open Bank Account</a>
+          <a href="#">Saving Account</a>
+          <a href="#">Current Account</a>
+          <a href="#">Joint Bank Account</a>
+          <a href="#">Zero Balance Account</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        ALL LOANS
+        <div class="dropdown">
+          <a href="#">Personal Loans in UAE</a>
+          <a href="#">Home Loans</a>
+          <a href="#">Car Loans</a>
+          <a href="#">Loan Calculation</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        CREDIT CARD
+        <div class="dropdown">
+          <a href="#">Credit Card in UAE</a>
+          <a href="#">Cashback Credit Cards</a>
+          <a href="#">Travel Credit Cards</a>
+          <a href="#">Cinema Offers Credit Cards</a>
+          <a href="#">Reward Credit Cards</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        CREDIT SCORE
+        <div class="dropdown">
+          <a href="#">Check FREE Credit Score</a>
+          <a href="#">Credit Score for Home Loan</a>
+          <a href="#">Credit Score for Personal Loan</a>
+          <a href="#">Credit Score for Car Loan</a>
+        </div>
+      </li>
+    </ul>
+
+    <button class="btn-contact">CONTACT</button>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-pill">COMPARE POLICIES. CHOOSE SMART. SAVE EFFORTLESSLY.</div>
+    <p class="hero-subtitle">Your smart way to secure the best insurance and financial plans.</p>
+
+    <div class="cards-grid">
+      <div class="service-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><circle cx="16" cy="15" r="1.5"/></svg></div>
+        <h3>Credit Cards</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 3L2 10h20L12 3z"/></svg></div>
+        <h3>Bank Account</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+        <h3>Credit Score</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2"/><path d="M9 19h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z"/><circle cx="14" cy="14" r="2"/></svg></div>
+        <h3>Personal Loan</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M5 17a2 2 0 100-4 2 2 0 000 4zM19 17a2 2 0 100-4 2 2 0 000 4z"/><path d="M5 9l2-4h10l2 4M3 11h18v4H3z"/></svg></div>
+        <h3>Car Loan</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <h3>Home Loan</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPREHENSIVE INSURANCE SOLUTIONS -->
+  <section class="section-padding">
+    <h2 class="section-title">COMPREHENSIVE INSURANCE SOLUTIONS</h2>
+    <p class="section-desc">At Gulf Policy Souq, we make it easy to find the perfect insurance coverage tailored to your needs.</p>
+
+    <div class="insurance-grid">
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-car" style="font-size:30px; color:#00dfd8;"></i></div>
+        <h3>Car Insurance</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-heart-pulse" style="font-size:30px; color:#ff0080;"></i></div>
+        <h3>Health Insurance</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-plane" style="font-size:30px; color:#ffd700;"></i></div>
+        <h3>Travel Insurance</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-umbrella" style="font-size:30px; color:#00dfd8;"></i></div>
+        <h3>Term Life</h3>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-piggy-bank" style="font-size:30px; color:#ff0080;"></i></div>
+        <h3>Investment Plans</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE GULF POLICY SOUQ -->
+  <section class="two-col-section"> 
+    <div>
+      <img src="https://gulfpolicysouq.com/wp-content/uploads/2026/02/image.webp" alt="Global Rewards Credit Card" style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 20px 50px rgba(121, 40, 202, 0.5);">
+    </div>
+    <div>
+      <h2 style="font-size: 26px; font-weight:800; color:#ffffff; margin-bottom:15px;">WHY CHOOSE GULF POLICY SOUQ</h2>
+      <p style="color:#cbd5e1; font-size:15px; margin-bottom:25px;">
+        At Gulf Policy Souq, we simplify your financial planning by providing a seamless platform to compare and select insurance and investment solutions.
+      </p>
+      
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-icon-box"><i class="fa-solid fa-bolt"></i></div>
+          <div class="feature-text">
+            <h4>Quick Approvals</h4>
+            <p>Enjoy Quick Approvals and Secure Your Ideal Plan Without Any Delays!</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon-box" style="background: linear-gradient(135deg, #00dfd8 0%, #0072ff 100%);"><i class="fa-solid fa-scale-balanced"></i></div>
+          <div class="feature-text">
+            <h4>Compare & Save</h4>
+            <p>Easily Compare Options and Make Smarter Choices to Maximize Your Savings!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAKE SMARTER FINANCIAL CHOICES -->
+  <section class="two-col-section" style="padding-top:20px;">
+    <div>
+      <h2 style="font-size: 26px; font-weight:800; color:#ffffff; margin-bottom:15px;">MAKE SMARTER FINANCIAL CHOICES</h2>
+      <p style="color:#cbd5e1; font-size:15px;">
+        At Gulf Policy Souq, we provide a seamless platform to compare and choose insurance and financial products that suit your needs.
+      </p>
+    </div>
+    <div>
+      <div class="check-list">
+        <div class="check-item"><i class="fa-solid fa-check"></i> Get personalised policy suggestions tailored to your needs.</div>
+        <div class="check-item"><i class="fa-solid fa-check"></i> Your information stays safe with advanced security protection.</div>
+        <div class="check-item"><i class="fa-solid fa-check"></i> Compare multiple plans easily and choose the one that helps you save.</div>
+        <div class="check-item"><i class="fa-solid fa-check"></i> Gulf Policy Souq helps you make smarter, informed insurance decisions.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANK NETWORK SECTION -->
+  <section class="banks-section">
+    <h3 style="text-align: center; font-size: 16px; font-weight: 800; color: #ffffff; letter-spacing: 1px; text-transform: uppercase;">
+      OUR NETWORK OF LEADING UAE BANKS AND FINANCIAL INSTITUTIONS
+    </h3>
+
+    <div class="banks-grid">
+      <!-- Row 1 -->
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/citibank.webp" alt="Citi Bank" style="width: 100px;">
+        </div>
+        <span>Citi Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/fab.png" alt="FAB" style="width: 70px;">
+        </div>
+        <span>First Abu Dhabi Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/standard-charted.png" alt="Standard Chartered" style="width: 100px;">
+        </div>
+        <span>Standard Chartered Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/hsbc.webp" alt="HSBC" style="width: 100px;">
+        </div>
+        <span>HSBC</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/adcb.png" alt="ADCB" style="width: 100px;">
+        </div>
+        <span>ADCB</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/8.webp" alt="Liv" style="width: 100px;">
+        </div>
+        <span>Liv</span>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/emirates-nbd.webp" alt="Emirates NBD" style="width: 100px;">
+        </div>
+        <span>Emirates NBD</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/7.webp" alt="Invest Bank" style="width: 100px;">
+        </div>
+        <span>Invest Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/Rakbank-Logo.png" alt="RAK Bank" style="width: 100px;">
+        </div>
+        <span>RAK Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/adib.webp" alt="ADIB" style="width: 100px;">
+        </div>
+        <span>ADIB</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/cbd.png" alt="CBD" style="width: 100px;">
+        </div>
+        <span>Commercial Bank of Dubai</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/dubai-islamic-personal-loan-home.webp" alt="DIB" style="width: 100px;">
+        </div>
+        <span>Dubai Islamic Bank</span>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/sib.png" alt="Sharjah Islamic Bank" style="width: 100px;">
+        </div>
+        <span>Sharjah Islamic Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/finance-house.png" alt="Finance House" style="width: 100px;">
+        </div>
+        <span>Finance House</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/ajman.png" alt="Ajman Bank" style="width: 100px;">
+        </div>
+        <span>Ajman Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/deem.png" alt="deem" style="width: 100px;">
+        </div>
+        <span>deem</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/dubai-first.png" alt="Dubai First" style="width: 100px;">
+        </div>
+        <span>Dubai First</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/bnq.png" alt="NBQ" style="width: 100px;">
+        </div>
+        <span>NBQ</span>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/emirates-islamic.webp" alt="Emirates Islamic" style="width: 100px;">
+        </div>
+        <span>Emirates Islamic</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/american-express.png" alt="American Express" style="width: 100px;">
+        </div>
+        <span>American Express</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/cbi.png" alt="CBI" style="width: 100px;">
+        </div>
+        <span>CBI</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/nbfbank.webp" alt="NBF" style="width: 100px;">
+        </div>
+        <span>NBF</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/hilal.png" alt="Al Hilal Bank" style="width: 100px;">
+        </div>
+        <span>Al Hilal Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/uab.png" alt="United Arab Bank" style="width: 100px;">
+        </div>
+        <span>United Arab Bank</span>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/6.webp" alt="Arab Bank" style="width: 100px;">
+        </div>
+        <span>Arab Bank</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/5.webp" alt="Al Mawarid" style="width: 100px;">
+        </div>
+        <span>Al Mawarid</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/4.webp" alt="AAFAQ" style="width: 100px;">
+        </div>
+        <span>AAFAQ</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/3-2.webp" alt="Mashreq" style="width: 100px;">
+        </div>
+        <span>Mashreq</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/2-2.webp" alt="Bank of Sharjah" style="width: 100px;">
+        </div>
+        <span>Bank of Sharjah</span>
+      </div>
+      <div class="bank-card">
+        <div class="bank-logo-svg">
+          <img src="https://gulfpolicysouq.com/wp-content/uploads/2025/12/wio.webp" alt="Wio Bank" style="width: 100px;">
+        </div>
+        <span>Wio Bank</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR ARTICLES -->
+  <section class="section-padding">
+    <div class="articles-header">
+      <h2 style="font-size:24px; font-weight:800; color:#ffffff;">OUR ARTICLES</h2>
+      <a href="#" class="see-all">See All Articles &rarr;</a>
+    </div>
+
+    <div class="articles-grid">
+      <div class="article-card">
+        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=500&q=80');"></div>
+        <div class="article-body">
+          <h4>Best Travel Credit Cards in UAE 2026 - Air</h4>
+          <p>Introduction to Travel Credit Cards in the UAE Imagine this...</p>
+          <a href="#" class="read-more">READ MORE &rarr;</a>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=500&q=80');"></div>
+        <div class="article-body">
+          <h4>Best Cashback Credit Cards in UAE 2026</h4>
+          <p>Why Cashback Credit Cards Matter in UAE Living in the...</p>
+          <a href="#" class="read-more">READ MORE &rarr;</a>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80');"></div>
+        <div class="article-body">
+          <h4>Best Credit Cards in UAE for Salary Above AED 10,000</h4>
+          <p>Best Credit Cards in UAE for Salary Above AED 10,000...</p>
+          <a href="#" class="read-more">READ MORE &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR ADVISORS ARE READY TO HELP YOU (WITH SMOOTH 3D SCROLL DRIVEN ANIMATION) -->
+  <section class="advisors-section" id="advisorsSection">
+    <div class="advisors-container">
+      <div>
+        <h2 class="advisors-title">OUR ADVISORS ARE READY TO HELP YOU</h2>
+        <p class="advisors-desc">Our experts are available to guide you toward the best insurance choices.</p>
+        
+        <div class="contact-buttons">
+          <div class="pill-btn"><i class="fa-solid fa-phone" style="color:#00dfd8;"></i> 04 230 6329</div>
+          <div class="pill-btn"><i class="fa-solid fa-envelope" style="color:#ff0080;"></i> info@gulfpolicysouq.com</div>
+        </div>
+      </div>
+
+      <!-- Video Matching 3D Scroll-Animated Stacked Credit Cards -->
+      <div class="tilted-cards-stack">
+        <!-- Top Dark/Silver Premium Card -->
+        <div class="advisors-card card-top">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <i class="fa-solid fa-wifi" style="transform: rotate(90deg); font-size: 14px;"></i>
+            <span style="font-size:10px; font-weight:bold; font-family:sans-serif;">PREMIUM</span>
+          </div>
+          <div class="card-num">5524 7285 3588 4000</div>
+          <div class="card-details">
+            <div>CARD HOLDER<br><strong>SAINT PAUL</strong></div>
+            <div>EXPIRY<br><strong>10/24</strong></div>
+          </div>
+        </div>
+
+        <!-- Middle Pink/Gold Card -->
+        <div class="advisors-card card-mid">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <i class="fa-solid fa-wifi" style="transform: rotate(90deg); font-size: 14px;"></i>
+            <span style="font-size:10px; font-weight:bold; font-family:sans-serif;">GOLD</span>
+          </div>
+          <div class="card-num">5524 7285 3588 4000</div>
+          <div class="card-details">
+            <div>CARD HOLDER<br><strong>SAINT PAUL</strong></div>
+            <div>EXPIRY<br><strong>10/24</strong></div>
+          </div>
+        </div>
+
+        <!-- Bottom Cyan Smart Card -->
+        <div class="advisors-card card-bot">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <i class="fa-solid fa-wifi" style="transform: rotate(90deg); font-size: 14px;"></i>
+            <span style="font-size:10px; font-weight:bold; font-family:sans-serif;">SMART</span>
+          </div>
+          <div class="card-num">5524 7285 3588 4000</div>
+          <div class="card-details">
+            <div>CARD HOLDER<br><strong>SAINT PAUL</strong></div>
+            <div>EXPIRY<br><strong>40/24</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Contact us</h5>
+        <p style="color:#cbd5e1; font-size:13px; line-height:1.7;">
+          Office number 418 Block B,<br>
+          Business Village Building Port,<br>
+          Saeed Deira, Dubai, UAE<br><br>
+          +971 04-2306329<br>
+          info@gulfpolicysouq.com
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Credit Cards</h5>
+        <ul>
+          <li><a href="#">Cashback Credit Cards</a></li>
+          <li><a href="#">Travel Credit Cards</a></li>
+          <li><a href="#">Cinema Offers Credit Cards</a></li>
+          <li><a href="#">Reward Credit Cards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>All Loans</h5>
+        <ul>
+          <li><a href="#">Personal Loan</a></li>
+          <li><a href="#">Home Loan</a></li>
+          <li><a href="#">Car Loan</a></li>
+          <li><a href="#">Loan Calculator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">Credit Score</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#">Articles</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Information</h5>
+        <ul>
+          <li><a href="#">Faqs</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Data Protection</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="disclaimer-text">
+      Disclaimer:<br>
+      Loan rates, terms, and eligibility on GulfPolicySouq and GulfLoanFinder.com are for informational purposes only and may change without notice. This is not financial advice. Please verify all details directly with the relevant bank or licensed financial institution before making any decision.
+    </div>
+
+    <div class="footer-bottom">
+      <div>2026 Gulf Policy Souq. All Rights Reserved.</div>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING COOKIE WIDGET -->
+  <div class="cookie-widget">
+    <i class="fa-solid fa-cookie-bite"></i>
+  </div>
+
+  <!-- JAVASCRIPT FOR SCROLL ANIMATION -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const section = document.getElementById("advisorsSection");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              section.classList.add("active");
+            } else {
+              section.classList.remove("active");
+            }
+          });
+        },
+        {
+          threshold: 0.25
+        }
+      );
+
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
